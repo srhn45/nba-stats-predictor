@@ -1,63 +1,48 @@
 # NBA Stats Predictor
 
-A sophisticated deep learning tool that predicts NBA player statistics by analyzing historical performance data. This project uses the NBA API to collect comprehensive player statistics and employs deep learning to forecast individual player performance for upcoming, current, or historical seasons.
+A deep learning tool that predicts NBA player statistics using historical data. The model analyzes player career trajectories to forecast future performance on a season-by-season basis.
 
-## 🏀 Features
+## Features
 
-- **Comprehensive Data Collection**
-  - Automated scraping of NBA player statistics using the official NBA API
-  - Collection of per-game statistics including points, rebounds, assists, and more
-  - Historical data dating back to 1980
-  - Rate-limited API calls to ensure reliable data collection
+- **Data Collection**: Automated scraping of NBA player statistics directly from the NBA
+- **Data Processing**: Comprehensive preprocessing including normalization and variable-length sequence preparation
+- **Model Training**: LSTM-based deep learning model for time-series prediction
+- **Statistics Prediction**: Forecasts key player statistics for upcoming seasons
+- **Model Persistence**: Save and load trained models for future use
 
-- **Data Processing**
-  - Conversion of season totals to per-game statistics
-  - Intelligent handling of missing data
-  - Advanced data normalization with masked value support
-  - Career sequence creation for temporal analysis
+## Project Structure
 
-- **Deep Learning Prediction Model**
-  - Sequential player career analysis
-  - Prediction of multiple statistical categories
-  - Validation on out-of-sample data
-  - Support for both current and historical season predictions
- 
-## 🚀 Upcoming
+```
+nba-stats-predictor/
+├── data/                           # Generated data files
+│   ├── nba_player_stats_*.csv     # Historical player statistics
+│   └── predicted_*_season.csv     # Model predictions
+├── scraper.ipynb                  # Web scraping notebook
+├── trainer.ipynb                  # Model training notebook
+├── guesser.ipynb                  # Prediction interface
+├── nba_stats_predictor_model.keras # Saved model (generated)
+└── normalization_params.json      # Model parameters (generated)
+```
 
-### Model Improvements
-- Optimization of the base deep learning model
-  - Fine-tuning of hyperparameters
-  - Exploration of alternative architectures
-  - Performance benchmarking against different approaches
+## How It Works
 
-### Pre-trained Model Inclusion
-- Addition of pre-trained model files to the repository
-- Easy-to-use model loading functionality
-- Documentation for using pre-trained models
-- Version tracking for different model iterations
+1. **Data Collection** (`scraper.ipynb`):
+   - Scrapes historical NBA player statistics
+   - Processes and cleans the raw data
+   - Saves data to CSV format
 
-### Data Updates
-- Will try to keep the included data up to date
+2. **Model Training** (`trainer.ipynb`):
+   - Preprocesses data for deep learning
+   - Saves preprocessed data to CSV format
+   - Implements and trains LSTM model
+   - Saves trained model and normalization parameters
 
-Stay tuned!
+3. **Predictions** (`guesser.ipynb`):
+   - Loads trained model and parameters
+   - Makes predictions for future seasons
+   - Exports predictions to CSV files
 
-## 🛠️ Technology Stack
-
-- **Python 3.x**
-- **Key Libraries**:
-  - `nba_api`: Official NBA stats API client
-  - `pandas`: Data manipulation and analysis
-  - `numpy`: Numerical computing
-  - `tensorflow/keras`: Deep learning implementation
-  - `jupyter`: Interactive development environment
-
-## 📋 Prerequisites
-
-1. Python 3.8 or higher
-2. Jupyter Notebook
-3. pip (Python package manager)
-
-## 🚀 Installation
+## Getting Started
 
 1. Clone the repository:
 ```bash
@@ -65,63 +50,47 @@ git clone https://github.com/srhn45/nba-stats-predictor.git
 cd nba-stats-predictor
 ```
 
-2. Create and activate a virtual environment (recommended):
+2. Install required packages:
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install tensorflow pandas numpy sklearn
 ```
 
-3. Install required packages:
-```bash
-pip install -r requirements.txt
-```
+3. Run notebooks in order:
+   - First run `scraper.ipynb` to collect data
+   - Then `trainer.ipynb` to train the model
+   - Finally `guesser.ipynb` to make predictions
+  
+   - Can run `guesser.ipynb` directly with the provided data if not looking to make changes
 
-## 💻 Usage
+## Generated Files
 
-The project consists of two main Jupyter notebooks:
+The following files are generated through the notebooks:
 
-1. **scraper.ipynb**
-   - Collects historical NBA player statistics
-   - Features automatic rate limiting and error handling
-   - Saves data in CSV format for further processing
+- `data/nba_player_stats_*.csv`: Contains scraped NBA statistics
+- `data/predicted_*_season.csv`: Contains model predictions
+- `nba_stats_predictor_model.keras`: Trained model file
+- `normalization_params.json`: Model normalization parameters
 
-2. **guesser.ipynb**
-   - Processes and normalizes the collected data
-   - Implements the prediction model
-   - Provides player performance forecasting
+Note: All generated files can be recreated by running the notebooks in sequence.
 
-To run the project:
+## Future Improvements and Additions
 
-1. Start Jupyter Notebook:
-```bash
-jupyter notebook
-```
+- Add player similarity analysis
+- Implement confidence intervals for predictions
+- Add injury history consideration
+- Expand to team-level predictions
+- 
+- Develop Fantasy Draft AI Bot using predictions
+  - Implement reinforcement learning for optimal draft strategies
+  - Consider league-specific scoring systems
+  - Account for position scarcity and roster construction
+  - Optimize for season-long performance using predicted statistics
+  - Adapt strategy based on draft position
 
-2. First run `scraper.ipynb` to collect the data
-3. Then run `guesser.ipynb` to train the model and make predictions
+## Contributing
 
-## 📊 Data Collection
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-The `NBADataCollector` class handles data collection with the following features:
+## License
 
-- Automatic rate limiting to prevent API timeouts
-- Incremental progress saving
-- Error logging and recovery
-- Per-game statistics calculation
-- Season identification and filtering
-
-## 🤖 Model Architecture
-
-The prediction model:
-- Uses sequential career data to predict future performance
-- Implements masked value handling for incomplete seasons
-- Splits data into training and validation sets (90/10 split)
-- Normalizes statistics while preserving data integrity
-
-## 📈 Performance Metrics
-
-The model evaluates predictions using:
-- Per-game statistics accuracy
-- Player career trajectory analysis
-- Out-of-sample validation
-- Historical season comparisons
+This project is licensed under the MIT License - see the LICENSE file for details.
