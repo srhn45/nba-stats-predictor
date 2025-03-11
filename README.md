@@ -76,10 +76,12 @@ Note: All generated files can be recreated by running the notebooks in sequence.
 
 ## Future Improvements and Additions
 
+- Further optimize the base model
 - Add player similarity analysis
 - Implement confidence intervals for predictions
 - Add injury history consideration
 - Expand to team-level predictions
+
   
 - Develop Fantasy Draft AI Bot using predictions
   - Implement reinforcement learning for optimal draft strategies
