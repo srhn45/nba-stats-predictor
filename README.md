@@ -2,7 +2,7 @@
 
 A deep learning tool that predicts NBA player statistics using historical data. The model analyzes player career trajectories to forecast future performance on a season-by-season basis.
 
-## Features
+## 🏀 Features
 
 - **Data Collection**: Automated scraping of NBA player statistics directly from the NBA
 - **Data Processing**: Comprehensive preprocessing including normalization and variable-length sequence preparation
