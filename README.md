@@ -17,6 +17,7 @@ nba-stats-predictor/
 ├── data/                           # Generated data files
 │   ├── nba_player_stats_*.csv     # Historical player statistics
 │   └── predicted_*_season.csv     # Model predictions
+│   └── ...                        
 ├── scraper.ipynb                  # Web scraping notebook
 ├── trainer.ipynb                  # Model training notebook
 ├── guesser.ipynb                  # Prediction interface
