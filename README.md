@@ -80,7 +80,7 @@ Note: All generated files can be recreated by running the notebooks in sequence.
 - Implement confidence intervals for predictions
 - Add injury history consideration
 - Expand to team-level predictions
-- 
+  
 - Develop Fantasy Draft AI Bot using predictions
   - Implement reinforcement learning for optimal draft strategies
   - Consider league-specific scoring systems
